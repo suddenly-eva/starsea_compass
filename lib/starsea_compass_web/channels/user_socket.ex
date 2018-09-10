@@ -2,7 +2,7 @@ defmodule StarseaCompassWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", StarseaCompassWeb.RoomChannel
+  channel "games:*", StarseaCompassWeb.V1.GameChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -19,7 +19,11 @@ defmodule StarseaCompassWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
+  def connect(params, socket) do
+  
+    # Authenticate with Guardian
+    IO.inspect(params)
+    IO.inspect(socket)
     {:ok, socket}
   end
 
